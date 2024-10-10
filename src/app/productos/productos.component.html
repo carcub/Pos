@@ -1,0 +1,29 @@
+<div class="container mt-5">
+	<input type="search" class="form-control" placeholder="Buscar...">
+	<button class="btn btn-primary">Agregar</button>
+	<table class="mt-5 table table-sm table-borderless table-striped">
+		<thead>
+			<tr>
+				<th>Codigo</th>
+				<th>Nombre</th>
+				<th>Descripción</th>
+				<th>Precio</th>
+				<th>Cantidad</th>
+				<th>Opciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			@for(producto of productos; track producto.id) {
+				<tr>
+					<td>{{producto.codigo}}</td>
+					<td>{{producto.nombre}}</td>
+					<td>{{producto.descripcion}}</td>
+					<td>{{producto.precio | currency}}</td>
+					<td>{{producto.cantidad}}</td>
+					<td>
+						<button class="btn btn-sm btn-primary">Editar</button>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
