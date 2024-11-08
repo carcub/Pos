@@ -1,0 +1,34 @@
+<div class="vh-100 d-flex justify-content-center align-items-center">
+	<div class="card background" style="width: 20rem;">
+		<img src="logo.avif" class="card-img-top" alt="...">
+		<div class="card-body">
+			<h5 class="card-title text-light">Acceso</h5>
+			<form [formGroup]="authForm" (ngSubmit)="submit()" novalidate>
+				<div class="mb-3">
+					<label for="usuario" class="form-label text-light">Usuario</label>
+					<input id="usuario" type="text" class="form-control" formControlName="usuario" placeholder="Nombre de usuario"
+					[class.is-invalid]="authForm.get('usuario')?.errors && authForm.get('usuario')?.touched">
+					<div class="invalid-feedback">
+						<p>Usuario es requerido</p>
+					</div>
+				</div>
+				<div class="mb-3">
+					<label for="password" class="form-label text-light">Contraseña</label>
+					<div class="input-group mb-3">
+						<input id="password" [type]="showPassword() ? 'text' : 'password'" class="form-control" formControlName="password" placeholder="Escribir contraseña" aria-label="Escribir contraseña" aria-describedby="basic-addon2"
+						[class.is-invalid]="authForm.get('password')?.errors && authForm.get('password')?.touched">
+						<button class="btn btn-secondary" type="button" id="button-addon2" (click)="show()">
+							<i class="bi" [ngClass]="showPassword() ? 'bi-eye' : 'bi-eye-slash'"></i>
+						</button>
+						<div class="invalid-feedback">
+							<p>Contraseña es requerida</p>
+						</div>
+					</div>
+				</div>
+				<div class="d-grid mt-2">
+					<button class="btn btn-primary" type="submit">Iniciar sesión</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

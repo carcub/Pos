@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
 
 
 export const routes: Routes = [
@@ -8,9 +9,15 @@ export const routes: Routes = [
 		pathMatch: 'full'
 	},
 	{
+		path: 'login',
+		loadComponent: () => import('./auth/auth.component').then(m => m.AuthComponent),
+		title: 'Pos - Login'
+	},
+	{
 		path: '',
 		loadComponent: () => import('./layout/layout.component').then(m => m.LayoutComponent),
 		title: 'Pos',
+		canActivate: [authGuard],
 		children: [
 			{
 				path: 'inicio',
